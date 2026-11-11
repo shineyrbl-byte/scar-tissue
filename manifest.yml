@@ -64,7 +64,15 @@ modules:
           required: false
           description: Jira issue key. Leave empty to use the issue the user is viewing.
 
+  trigger:
+    - key: warn-on-new-issue
+      function: on-issue-created-fn
+      events:
+        - avi:jira:created:issue
+
   function:
+    - key: on-issue-created-fn
+      handler: triggers/index.onIssueCreated
     - key: panel-resolver
       handler: resolvers/index.handler
     - key: find-scars-fn
