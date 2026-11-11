@@ -1,4 +1,7 @@
-import Resolver from '@forge/resolver';
+import ResolverModule from '@forge/resolver';
+
+// @forge/resolver is CommonJS; when bundled as ESM the class sits under .default.
+const Resolver = ResolverModule.default ?? ResolverModule;
 import api from '@forge/api';
 import { analyzeIssue } from '../service/scars.js';
 import { addComment } from '../data/jira.js';
