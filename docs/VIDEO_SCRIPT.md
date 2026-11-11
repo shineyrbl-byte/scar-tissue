@@ -6,6 +6,8 @@ Target **2:50**. Upload to YouTube as **Public**. About 130 spoken words per min
 
 ## Before you record
 
+**Slides** (1920×1080, drag into iMovie): `docs/video/title.png` · `how-it-works.png` · `closing.png`
+
 **Browser**
 - [ ] Clean Chrome window, logged in to avisha-dev.atlassian.net
 - [ ] Bookmarks bar hidden (Cmd+Shift+B), other tabs closed, zoom **110–125%**
@@ -74,7 +76,7 @@ Send it and scroll the answer slowly.
 
 ## Scene 5: How it works and close (2:20 – 2:50)
 
-**Screen:** The README "How it works" diagram, then a title card: **🩹 Scar Tissue: your team's incident memory.**
+**Screen:** `docs/video/how-it-works.png`, then `docs/video/closing.png`.
 
 **Say:**
 > "It's all Forge: an issue panel, a trigger on new issues, and a Rovo agent whose actions any other agent can reuse. It reads Jira incidents and Confluence postmortems, and matches them by component, wording, severity and recency.

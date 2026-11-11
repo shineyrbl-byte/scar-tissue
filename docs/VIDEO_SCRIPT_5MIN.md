@@ -7,6 +7,8 @@ The 3-minute version is in [`VIDEO_SCRIPT.md`](VIDEO_SCRIPT.md).
 
 ## Before you record
 
+**Slides** (1920×1080, drag into iMovie): `docs/video/title.png` · `how-it-works.png` · `closing.png`
+
 **Browser:** clean Chrome window · bookmarks bar hidden (Cmd+Shift+B) · zoom 125% · Do Not Disturb on.
 
 **Tabs, in order**
@@ -30,7 +32,7 @@ The 3-minute version is in [`VIDEO_SCRIPT.md`](VIDEO_SCRIPT.md).
 
 ## Scene 1: Hook (0:00 – 0:25)
 
-**Screen:** title card *"🩹 Scar Tissue"* for 2 seconds → Confluence ENG page list. Scroll slowly past the postmortems.
+**Screen:** `docs/video/title.png` for 3 seconds → Confluence ENG page list. Scroll slowly past the postmortems.
 
 **Say:**
 > "Every engineering team writes postmortems. After an outage, we sit down, work out what went wrong, and write a list of lessons we swear we'll remember.
@@ -115,7 +117,7 @@ The 3-minute version is in [`VIDEO_SCRIPT.md`](VIDEO_SCRIPT.md).
 
 ## Scene 8: How it's built (3:55 – 4:30)
 
-**Screen:** README "How it works" diagram → `manifest.yml` (scroll past `jira:issuePanel`, `rovo:agent`, `action`, `trigger`) → GitHub **Actions** tab with green runs.
+**Screen:** `docs/video/how-it-works.png` → `manifest.yml` (scroll past `jira:issuePanel`, `rovo:agent`, `action`, `trigger`) → GitHub **Actions** tab with green runs.
 
 **Say:**
 > "Under the hood, it's all Forge. A UI Kit issue panel, a trigger on every new Jira issue, and a Rovo agent. Scar Tissue reads incidents from Jira with JQL and postmortems from Confluence with CQL, pulls out root causes, lessons and action items, and matches them to new work by component and wording.
@@ -125,7 +127,7 @@ The 3-minute version is in [`VIDEO_SCRIPT.md`](VIDEO_SCRIPT.md).
 
 ## Scene 9: What's next and close (4:30 – 4:45)
 
-**Screen:** back to the demo issue with the panel open, or the title card *"🩹 Scar Tissue: your team's incident memory"*.
+**Screen:** `docs/video/closing.png` (hold for the last line and 2 seconds after).
 
 **Say:**
 > "Next, I want to bring in Teamwork Graph for service ownership and check Bitbucket pull requests too.

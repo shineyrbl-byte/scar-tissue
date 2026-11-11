@@ -1,0 +1,35 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="_base.css"><style>
+body{padding:90px 120px;justify-content:flex-start}
+h2{font-size:64px;font-weight:800;letter-spacing:-1px}
+h2 small{font-size:32px;font-weight:500;color:#a7b0c2;margin-left:20px;letter-spacing:0}
+.row{display:flex;align-items:center;justify-content:space-between;margin-top:70px}
+.col{display:flex;flex-direction:column;gap:28px}
+.box{background:#1d2740;border:2px solid #34405e;border-radius:22px;padding:26px 32px;width:430px}
+.box h3{font-size:34px;font-weight:700}
+.box p{font-size:24px;color:#a7b0c2;margin-top:8px;line-height:1.35}
+.core{width:560px;background:#2a2219;border-color:#f2b179;padding:36px 40px}
+.core h3{font-size:42px}
+.core ol{margin-top:18px;padding-left:34px;font-size:27px;line-height:1.6;color:#efe4d6}
+.arrow{font-size:60px;color:#5d6a88}
+.out .box{border-color:#4a7a5c;background:#17281f}
+.foot{bottom:50px}
+</style></head><body>
+<h2>How it works <small>all on Atlassian Forge</small></h2>
+<div class="row">
+  <div class="col">
+    <div class="box"><h3>Jira</h3><p>Past incidents via JQL<br>(Incident type, labels, sev bugs)</p></div>
+    <div class="box"><h3>Confluence</h3><p>Postmortems via CQL<br>root cause · lessons · actions</p></div>
+  </div>
+  <div class="arrow">→</div>
+  <div class="box core"><h3>🩹 Scar Tissue engine</h3>
+    <ol><li>Match by wording + components</li><li>Link postmortems to incidents</li><li>Extract lessons &amp; action items</li><li>Score: severity × recency × repeats</li></ol>
+  </div>
+  <div class="arrow">→</div>
+  <div class="col out">
+    <div class="box"><h3>Auto-warning</h3><p>Comment on new issues<br>with checklist + @experts</p></div>
+    <div class="box"><h3>Issue panel</h3><p>UI Kit risk card with<br>“why it matched”</p></div>
+    <div class="box"><h3>Rovo agent</h3><p>find-scars · search-scars ·<br>add-preship-checklist</p></div>
+  </div>
+</div>
+<div class="foot">Deterministic &amp; explainable: every warning links back to something your team wrote.</div>
+</body></html>
