@@ -1,157 +1,103 @@
-# Scar Tissue: demo video script
+# Scar Tissue: demo video script (max 3:00)
 
-Target length **about 4:20** (the limit is 5:00). Upload to YouTube as **Public**.
+Target **2:50**. Upload to YouTube as **Public**. About 130 spoken words per minute, so every line below is kept short.
 
 ---
 
-## Before you record (10 min)
+## Before you record
 
 **Browser**
-- [ ] Use Chrome. Open a clean window (Cmd+Shift+N for incognito, or a new profile) and log in to avisha-dev.atlassian.net.
-- [ ] Hide the bookmarks bar (Cmd+Shift+B) and close other tabs.
-- [ ] Zoom to **110–125%** (Cmd and +) so text is readable on YouTube.
-- [ ] Turn on Do Not Disturb so no notifications pop up.
+- [ ] Clean Chrome window, logged in to avisha-dev.atlassian.net
+- [ ] Bookmarks bar hidden (Cmd+Shift+B), other tabs closed, zoom **110–125%**
+- [ ] Do Not Disturb on
 
-**Tabs, open in this order**
-1. Confluence → **ENG** space → page list showing the 3 postmortems
-2. Jira → **PAY** board
-3. PAY-1 (a past incident, used for one shot)
-4. A slide or the GitHub README showing the "How it works" diagram
+**Tabs, in order:** Confluence ENG page list · Jira PAY board · README "How it works" diagram
 
-**Data check**
-- [ ] Ask the Rovo agent the auth question once beforehand, so you know the answer looks right.
-- [ ] Have the demo issue text ready to paste (Scene 3).
+**Recording:** Cmd+Shift+5 → *Record Selected Portion* → browser only → mic on. One clip per scene; join them in iMovie.
 
-**Recording**
-- macOS: press **Cmd+Shift+5** → *Record Selected Portion* → select only the browser window → Options → Microphone: your mic.
-- Record **each scene as a separate clip**. It's much easier than one perfect take. Join them in iMovie or CapCut.
-- Talk slowly. Pause 1 second before and after each click.
+> ⚠️ **Rovo credits are limited.** Record **Scene 4 (Rovo) first**, in a single take, and don't test the question beforehand. Every other scene is free to re-record as often as you like.
 
 ---
 
-## Scene 1: The hook (0:00 – 0:20)
+## Scene 1: Problem (0:00 – 0:20)
 
-**Screen:** Confluence ENG space, list of postmortem pages. Slowly scroll past them.
+**Screen:** Confluence ENG space, scroll slowly past the postmortem pages, then cut to the Jira board showing PAY-1, PAY-2, PAY-3.
 
 **Say:**
-> "Every engineering team writes postmortems after an outage. They're full of hard-won lessons. And then… nobody reads them again."
+> "Every team writes postmortems after an outage, and then nobody reads them again. Our payments webhook broke three times. The lessons were written down. They just weren't in front of the next engineer."
 
 ---
 
-## Scene 2: The problem (0:20 – 0:40)
+## Scene 2: Live issue and the automatic warning (0:20 – 1:00)
 
-**Screen:** Open **PAY-1** ("Payments webhook timeouts after v2 schema change"), then the Jira board showing PAY-1, PAY-2, PAY-3.
+**Screen:** PAY board → **+ Create**
+- Work type: **Task**
+- Summary: `Add dispute_status field to payments webhook payload`
+- Component: `payments-webhook`
+- Description: `Add a new field to the payment webhook schema and roll it out to all merchants on Friday.`
+
+Click **Create** and open the issue.
 
 **Say:**
-> "So the same areas break again. Here, our payments webhook broke three times, and every time someone wrote down what to do differently. The knowledge existed. It just wasn't in front of the next engineer at the moment it mattered."
+> "This is Scar Tissue, a Forge app and Rovo agent that's your team's incident memory. A developer adds one field to the payments webhook. Looks harmless."
 
----
+> ✂️ *Stop recording. Wait ~20 s. Refresh the issue, then start the next clip.*
 
-## Scene 3: Meet Scar Tissue + create an issue live (0:40 – 1:15)
-
-**Screen:** Jira PAY board → click **+ Create**.
-
-Fill in:
-- **Work type:** Task
-- **Summary:** `Add dispute_status field to payments webhook payload`
-- **Component:** `payments-webhook`
-- **Description:** `Merchants want dispute updates. Add a new field to the payment webhook schema and roll it out to all merchants on Friday.`
-
-Click **Create**, then open the new issue.
+**Screen:** Scroll to the Scar Tissue comment. Point at the red line, then tick one checklist box.
 
 **Say:**
-> "This is Scar Tissue: a Forge app and Rovo agent that's your team's incident memory.
-> Watch. A developer creates a ticket to add one field to the payments webhook. Looks harmless. Ship it Friday."
-
-> ✂️ *Stop recording here. Wait ~20 seconds for the comment to arrive, then start the next clip.*
+> "Before any code is written, Scar Tissue has already warned us: this area caused three incidents. Here's a checklist from our own postmortems, and who fixed it last time."
 
 ---
 
-## Scene 4: The automatic warning (1:15 – 1:45)
+## Scene 3: Issue panel (1:00 – 1:40)
 
-**Screen:** Refresh the issue. Scroll to **Activity → Comments** and show the Scar Tissue comment. Point your cursor at the red line and the checklist.
+**Screen:** Click the **Scar Tissue** button (plaster icon) under the issue title. Move your cursor over: the High risk banner → one lesson and its postmortem link → *Who knows this area* → the purple `payments-webhook` tag in the incidents table.
 
 **Say:**
-> "Before anyone has written a line of code, Scar Tissue has already commented. Changes to payments-webhook caused three incidents. And here's the checklist, taken straight from our own postmortems: contract tests, replaying the dead-letter queue, a version flag. It even mentions who fixed this last time."
-
-**Action:** tick one checklist box.
-
-> "Now the review has to look at them."
+> "The panel shows the full picture: risk level, lessons linked to the postmortem they came from, the people to ask, and every matching incident. And it's not a black box. Each match shows why: the shared component and words. Nothing is made up."
 
 ---
 
-## Scene 5: The issue panel (1:45 – 2:35)
+## Scene 4: Rovo agent (1:40 – 2:20) · *record this first, one take*
 
-**Screen:** Scroll up and click the **Scar Tissue** button (plaster icon) under the issue title. The panel opens.
-
-Move your cursor slowly over:
-1. The red **High risk** banner and headline
-2. **What we learned last time**: point at one lesson, then hover the postmortem link
-3. **Who knows this area**
-4. **Similar past incidents** table: point at the purple `payments-webhook` tag and the word tags
-
-**Say:**
-> "Open the panel and you get the full picture. The risk level. The lessons, each linked to the postmortem it came from. The people who fixed it before. And every past incident that matched.
-> This part matters: it's not a black box. Every match shows why: the shared component and the shared words. Scar Tissue never invents a lesson. Everything links back to something your team actually wrote."
-
-**Optional (5 sec):** click a postmortem link to show the Confluence page opening, then come back.
-
----
-
-## Scene 6: Ask the Rovo agent (2:35 – 3:25)
-
-**Screen:** Click **Rovo** in the top bar → pick the **Scar Tissue** agent → type:
+**Screen:** Click **Rovo** → choose **Scar Tissue** → paste:
 
 > `We're rotating the auth signing key next week. Anything I should know?`
 
-Let the answer appear and scroll through it slowly.
+Send it and scroll the answer slowly.
 
-**Say (while typing):**
-> "But what if there's no ticket yet? You just ask. I'm planning to rotate our auth signing key."
-
-**Say (when the answer shows):**
-> "It found the EU login outage from the last rotation, and the two steps we missed: publish the new key to JWKS first, and purge the edge cache. That's the exact mistake we'd have made again."
-
-**Optional (10 sec):** go back to the PAY issue, ask *"Has anything like this issue broken before?"*, then say **"yes"** when it offers the checklist.
+**Say:**
+> "No ticket yet? Just ask. I'm about to rotate our auth signing key… It found the outage from the last rotation, and the two steps we missed: publish the new key first, and purge the edge cache. Exactly the mistake we'd have repeated."
 
 ---
 
-## Scene 7: How it works (3:25 – 4:00)
+## Scene 5: How it works and close (2:20 – 2:50)
 
-**Screen:** The "How it works" diagram (README or a slide). Optionally flash `manifest.yml` for 3 seconds.
-
-**Say:**
-> "Under the hood, it's all Forge. A Jira issue panel, a trigger on new issues, and a Rovo agent. Scar Tissue reads past incidents from Jira and postmortems from Confluence, pulls out the root causes, lessons and action items, and matches them to new work by component and wording, weighted by severity, how recent it was, and how often it's happened.
-> The agent's three actions (find scars, search scars, and add a pre-ship checklist) are reusable, so any other Rovo agent, like a release agent, can check for scars before it ships."
-
----
-
-## Scene 8: Close (4:00 – 4:20)
-
-**Screen:** Back to the issue with the panel open, or a title card: **🩹 Scar Tissue: your team's incident memory.**
+**Screen:** The README "How it works" diagram, then a title card: **🩹 Scar Tissue: your team's incident memory.**
 
 **Say:**
-> "Your team already paid for these lessons once, with outages, late nights and angry customers. Scar Tissue makes sure you only pay once. Thanks for watching."
+> "It's all Forge: an issue panel, a trigger on new issues, and a Rovo agent whose actions any other agent can reuse. It reads Jira incidents and Confluence postmortems, and matches them by component, wording, severity and recency.
+> Your team already paid for these lessons once. Scar Tissue makes sure you only pay once."
 
 ---
 
 ## After recording
 
-1. Join the clips in **iMovie** (or CapCut). Cut the waiting time in Scene 3.
-2. Add a title card at the start (2 sec): **Scar Tissue · Codegeist 2026 · Apps for Software Teams**.
-3. Optional: soft background music at about 10% volume.
-4. Export as **1080p**.
-5. Upload to YouTube:
+1. Join the clips in **iMovie** or CapCut. Cut the wait in Scene 2. **Check the total is under 3:00.**
+2. Optional: a 2-second title card at the start (counts toward the 3:00) and soft music at about 10% volume.
+3. Export **1080p**. Upload to YouTube as **Public**.
    - Title: `Scar Tissue – Forge app + Rovo agent that stops repeat incidents | Codegeist 2026`
-   - Visibility: **Public**
-   - Description: the tagline, plus the GitHub link https://github.com/shineyrbl-byte/scar-tissue
-6. Paste the YouTube link into the Devpost submission.
+   - Description: the tagline plus https://github.com/shineyrbl-byte/scar-tissue
+4. Paste the link into Devpost.
 
-## If something goes wrong while recording
+**Running long?** Cut in this order: the "It's all Forge…" sentence in Scene 5 → the Confluence scroll in Scene 1 → the checkbox tick in Scene 2.
+
+## If something goes wrong
 
 | Problem | Fix |
 |---|---|
-| No comment after 30 s | Refresh. Still nothing? Run `forge logs -e development` in Terminal. |
+| No comment after 30 s | Refresh. Still nothing? Run `forge logs -e development`. |
 | Panel shows "No scars" | Check the issue has component `payments-webhook`. |
-| Rovo picks the wrong agent | Click the agent name at the top of the chat and choose Scar Tissue again. |
-| You stumble on words | Keep going, pause, and repeat the sentence. Cut it later. |
+| Rovo credits run out | Use your earlier screenshot of the PAY-6 answer for Scene 4, with the same voiceover adapted to the payments issue. |
+| You stumble on words | Pause, repeat the sentence, and cut it later. |
