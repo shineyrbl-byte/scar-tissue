@@ -115,7 +115,8 @@ async function main() {
       issuetype: { name: 'Bug' },
       summary: inc.summary,
       description: adf(inc.description),
-      labels: ['incident'],
+      // Pre-labelled so the auto-warning trigger skips seeded history.
+      labels: ['incident', 'scar-tissue-warned'],
       components: [{ name: inc.component }],
       assignee: { accountId: me.accountId },
       priority: { name: inc.priority },

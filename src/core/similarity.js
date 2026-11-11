@@ -70,7 +70,7 @@ export function findMatches(index, issue, { limit = 5, minScore = 0.12 } = {}) {
     const text = dot / (qnorm * dnorm);
     const sharedComponents = overlap(issue.components, scar.components);
     const sharedLabels = overlap(issue.labels, scar.labels).filter(
-      (l) => !['incident', 'postmortem', 'post-mortem'].includes(l)
+      (l) => !['incident', 'postmortem', 'post-mortem', 'scar-tissue-warned'].includes(l)
     );
     const compScore = sharedComponents.length ? Math.min(1, sharedComponents.length / 2 + 0.5) : 0;
     const labelScore = sharedLabels.length ? Math.min(1, sharedLabels.length / 2) : 0;
