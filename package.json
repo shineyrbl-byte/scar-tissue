@@ -9,5 +9,12 @@
     "test": "node --test test/*.test.js",
     "lint": "forge lint",
     "seed": "node scripts/seed-demo.mjs"
+  },
+  "dependencies": {
+    "@forge/api": "^8.5.0",
+    "@forge/bridge": "^7.3.0",
+    "@forge/react": "^12.5.0",
+    "@forge/resolver": "^2.0.2",
+    "react": "^18.3.1"
   }
 }
