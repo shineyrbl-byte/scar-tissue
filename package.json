@@ -1,0 +1,13 @@
+{
+  "name": "scar-tissue",
+  "version": "1.0.0",
+  "description": "Forge app + Rovo agent that turns forgotten postmortems into just-in-time warnings on Jira issues.",
+  "type": "module",
+  "private": true,
+  "license": "MIT",
+  "scripts": {
+    "test": "node --test test/*.test.js",
+    "lint": "forge lint",
+    "seed": "node scripts/seed-demo.mjs"
+  }
+}
