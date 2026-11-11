@@ -8,15 +8,79 @@ modules:
       title: Scar Tissue
       icon: resource:static-assets;icon.svg
 
+  rovo:agent:
+    - key: scar-tissue-agent
+      name: Scar Tissue
+      description: Your team's incident memory. Finds past incidents and postmortem lessons related to an issue or change, and warns you before you repeat one.
+      prompt: resource:agent-prompt;agent.md
+      conversationStarters:
+        - Has anything like this issue broken before?
+        - What did we learn from past payments incidents?
+        - Add a pre-ship checklist to this issue
+      actions:
+        - find-scars
+        - search-scars
+        - add-preship-checklist
+
+  action:
+    - key: find-scars
+      name: Find past incidents for a Jira issue
+      function: find-scars-fn
+      actionVerb: GET
+      description: >
+        Given a Jira issue key, finds similar past incidents, the lessons and action
+        items from their postmortems, the people who fixed them, and an overall risk
+        level. Use when someone asks whether an issue or change has caused problems before.
+      inputs:
+        issueKey:
+          title: Issue key
+          type: string
+          required: false
+          description: Jira issue key such as PAY-311. Leave empty to use the issue the user is viewing.
+    - key: search-scars
+      name: Search past incidents by description
+      function: search-scars-fn
+      actionVerb: GET
+      description: >
+        Finds past incidents and postmortem lessons related to a free-text description
+        of a change, service or area. Use when there is no issue key.
+      inputs:
+        query:
+          title: What is changing
+          type: string
+          required: true
+          description: A short description, e.g. "changing the payments webhook schema".
+    - key: add-preship-checklist
+      name: Add a pre-ship checklist to a Jira issue
+      function: add-checklist-fn
+      actionVerb: CREATE
+      description: >
+        Turns lessons from related past incidents into a checklist comment on the
+        Jira issue and mentions the people who fixed them.
+      inputs:
+        issueKey:
+          title: Issue key
+          type: string
+          required: false
+          description: Jira issue key. Leave empty to use the issue the user is viewing.
+
   function:
     - key: panel-resolver
       handler: resolvers/index.handler
+    - key: find-scars-fn
+      handler: actions/index.findScars
+    - key: search-scars-fn
+      handler: actions/index.searchScars
+    - key: add-checklist-fn
+      handler: actions/index.addPreshipChecklist
 
 resources:
   - key: panel
     path: src/frontend/index.jsx
   - key: static-assets
     path: static
+  - key: agent-prompt
+    path: prompts
 
 app:
   runtime:
