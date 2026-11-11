@@ -7,12 +7,14 @@ their them then there these they this to too up us was we were what when where w
 who why will with would you your yes also after before again all any because being both each
 few more most other same should only own very s t don now get got go going went make made
 issue bug ticket task story please need needs needed using use used via per etc eg ie
+next week weeks today tomorrow soon later anything something everything know tell think
+want wanted planning plan plans going about there here thing things anyone someone ask asking
 `.split(/\s+/).filter(Boolean));
 
-// Very light stemming: good enough to match "timeouts"/"timeout", "failing"/"failed".
+// Very light stemming: good enough to match "timeouts"/"timeout", "rotating"/"rotation".
 export function stem(word) {
   if (word.length <= 4) return word;
-  for (const suffix of ['ing', 'ed', 'es', 's']) {
+  for (const suffix of ['ation', 'ion', 'ing', 'ed', 'es', 's']) {
     if (word.endsWith(suffix) && word.length - suffix.length >= 4) {
       return word.slice(0, -suffix.length);
     }

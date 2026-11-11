@@ -47,12 +47,16 @@ function overlap(a, b) {
 /**
  * Scores every scar against `issue` and returns the best matches.
  * Score = 0.7 * text cosine + 0.2 * component overlap + 0.1 * label overlap.
+ * Plain-text queries (no components/labels) use the text cosine, plus a small
+ * boost when the text names one of the incident's components.
  */
 export function findMatches(index, issue, { limit = 5, minScore = 0.12 } = {}) {
   const qtf = termFreq(tokenize(docText(issue)));
   const qvec = new Map();
   for (const [t, c] of qtf) qvec.set(t, (1 + Math.log(c)) * index.idf(t));
   const qnorm = norm(qvec);
+  const structured = (issue.components || []).length > 0 || (issue.labels || []).length > 0;
+  const queryText = ` ${docText(issue).toLowerCase()} `;
 
   const results = [];
   for (const { scar, vec, norm: dnorm } of index.vectors) {
@@ -68,13 +72,19 @@ export function findMatches(index, issue, { limit = 5, minScore = 0.12 } = {}) {
       }
     }
     const text = dot / (qnorm * dnorm);
-    const sharedComponents = overlap(issue.components, scar.components);
+    // Free-text questions can still name a component ("rotating the auth key").
+    const sharedComponents = structured
+      ? overlap(issue.components, scar.components)
+      : (scar.components || []).filter((c) => mentions(queryText, c));
     const sharedLabels = overlap(issue.labels, scar.labels).filter(
       (l) => !['incident', 'postmortem', 'post-mortem', 'scar-tissue-warned'].includes(l)
     );
     const compScore = sharedComponents.length ? Math.min(1, sharedComponents.length / 2 + 0.5) : 0;
     const labelScore = sharedLabels.length ? Math.min(1, sharedLabels.length / 2) : 0;
-    const score = 0.7 * text + 0.2 * compScore + 0.1 * labelScore;
+    // Free-text questions have no components or labels; don't penalise them for that.
+    const score = structured
+      ? 0.7 * text + 0.2 * compScore + 0.1 * labelScore
+      : Math.min(1, text + (sharedComponents.length ? 0.15 : 0));
 
     if (score >= minScore) {
       results.push({
@@ -89,6 +99,11 @@ export function findMatches(index, issue, { limit = 5, minScore = 0.12 } = {}) {
     }
   }
   return results.sort((a, b) => b.score - a.score).slice(0, limit);
+}
+
+function mentions(text, name) {
+  const escaped = String(name).toLowerCase().replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  return new RegExp(`(^|[^a-z0-9-])${escaped}([^a-z0-9-]|$)`).test(text);
 }
 
 function round(x) {

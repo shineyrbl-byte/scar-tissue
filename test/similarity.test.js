@@ -51,3 +51,18 @@ test('findMatches never matches an issue against itself', () => {
   const matches = findMatches(index, scars[0]);
   assert.ok(matches.every((m) => m.scar.key !== 'INC-1'));
 });
+
+test('free-text queries are not penalised for having no components', () => {
+  const index = buildIndex(scars);
+  const [top] = findMatches(index, { summary: 'login slow for EU users, CDN cache' });
+  assert.equal(top.scar.key, 'INC-2');
+  assert.ok(top.score > 0.5, `expected a strong score, got ${top.score}`);
+});
+
+test('free-text component mentions match whole words only', () => {
+  const index = buildIndex(scars);
+  const hit = findMatches(index, { summary: 'search reindex' }).find((m) => m.scar.key === 'INC-3');
+  assert.deepEqual(hit.why.sharedComponents, ['search']);
+  const miss = findMatches(index, { summary: 'research reindex' }).find((m) => m.scar.key === 'INC-3');
+  assert.deepEqual(miss?.why.sharedComponents ?? [], []);
+});
