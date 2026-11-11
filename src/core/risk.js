@@ -84,7 +84,8 @@ function headline(weighted, strong, now) {
   const comp = top.why.sharedComponents[0];
   if (strong.length >= 2) {
     const dated = strong.map((m) => m.scar.created).filter(Boolean);
-    const span = dated.length ? ` in the last ${monthsSpan(dated, now)} months` : '';
+    const months = dated.length ? monthsSpan(dated, now) : 0;
+    const span = months >= 2 ? ` in the last ${months} months` : '';
     const area = comp ? `Changes to ${comp}` : 'Work like this';
     return `${area} caused ${strong.length} incidents${span}.`;
   }

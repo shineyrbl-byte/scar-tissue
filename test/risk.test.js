@@ -53,3 +53,9 @@ test('markdown and ADF renderers include the important bits', () => {
   assert.equal(tasks.content.length, 2); // lesson + action item, not root cause
   assert.ok(JSON.stringify(adf).includes('"type":"mention"'));
 });
+
+test('headline skips the time span when incidents are all recent', () => {
+  const recent = new Date(NOW - 5 * 24 * 3600 * 1000).toISOString();
+  const r = assessRisk([match('INC-1', 0.6, { created: recent }), match('INC-2', 0.5, { created: recent })], { now: NOW });
+  assert.equal(r.headline, 'Changes to payments-webhook caused 2 incidents.');
+});
