@@ -64,12 +64,13 @@ function Lessons({ lessons }) {
       {lessons.map((l, i) => (
         <Box key={i} xcss={card}>
           <Stack space="space.050">
-            <Inline space="space.100" alignBlock="center">
+            {/* Label on its own line so a long postmortem title can't squeeze it into "Less…". */}
+            <Inline>
               <Lozenge appearance={l.kind === 'cause' ? 'default' : 'new'}>{KIND[l.kind]}</Lozenge>
-              <Text size="small" color="color.text.subtlest">
-                from {l.from} · <Link href={l.postmortem.url} openNewTab>{l.postmortem.title}</Link>
-              </Text>
             </Inline>
+            <Text size="small" color="color.text.subtlest">
+              from {l.from} · <Link href={l.postmortem.url} openNewTab>{l.postmortem.title}</Link>
+            </Text>
             <Text>{l.text}</Text>
           </Stack>
         </Box>
