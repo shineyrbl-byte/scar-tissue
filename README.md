@@ -2,6 +2,8 @@
 
 **Your team's incident memory, at the moment you're about to repeat one.**
 
+![tests](https://github.com/shineyrbl-byte/scar-tissue/actions/workflows/test.yml/badge.svg)
+
 Scar Tissue is an Atlassian Forge app and Rovo agent. When someone opens a Jira issue or gets ready to ship one, it checks your team's past incidents and the postmortems written about them. Then it tells you, right in the issue, what hurt last time, why, what you agreed to do differently, and who knows the fix.
 
 > "Heads up: changes to **payments-webhook** caused **3 incidents** in the last 9 months. The postmortem for INC-42 says: *always replay the dead-letter queue after a schema change.* Ask **Priya**, she fixed the last two."
