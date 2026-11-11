@@ -11,7 +11,9 @@ modules:
   rovo:agent:
     - key: scar-tissue-agent
       name: Scar Tissue
-      description: Your team's incident memory. Finds past incidents and postmortem lessons related to an issue or change, and warns you before you repeat one.
+      description: Your team's incident memory. Finds past incidents and postmortem
+        lessons related to an issue or change, and warns you before you repeat
+        one.
       prompt: resource:agent-prompt;agent.md
       conversationStarters:
         - Has anything like this issue broken before?
@@ -28,22 +30,25 @@ modules:
       function: find-scars-fn
       actionVerb: GET
       description: >
-        Given a Jira issue key, finds similar past incidents, the lessons and action
-        items from their postmortems, the people who fixed them, and an overall risk
-        level. Use when someone asks whether an issue or change has caused problems before.
+        Given a Jira issue key, finds similar past incidents, the lessons and
+        action items from their postmortems, the people who fixed them, and an
+        overall risk level. Use when someone asks whether an issue or change has
+        caused problems before.
       inputs:
         issueKey:
           title: Issue key
           type: string
           required: false
-          description: Jira issue key such as PAY-311. Leave empty to use the issue the user is viewing.
+          description: Jira issue key such as PAY-311. Leave empty to use the issue the
+            user is viewing.
     - key: search-scars
       name: Search past incidents by description
       function: search-scars-fn
       actionVerb: GET
       description: >
-        Finds past incidents and postmortem lessons related to a free-text description
-        of a change, service or area. Use when there is no issue key.
+        Finds past incidents and postmortem lessons related to a free-text
+        description of a change, service or area. Use when there is no issue
+        key.
       inputs:
         query:
           title: What is changing
@@ -55,8 +60,8 @@ modules:
       function: add-checklist-fn
       actionVerb: CREATE
       description: >
-        Turns lessons from related past incidents into a checklist comment on the
-        Jira issue and mentions the people who fixed them.
+        Turns lessons from related past incidents into a checklist comment on
+        the Jira issue and mentions the people who fixed them.
       inputs:
         issueKey:
           title: Issue key
@@ -93,8 +98,7 @@ resources:
 app:
   runtime:
     name: nodejs22.x
-  # Replaced by `forge register` with your own app id.
-  id: ari:cloud:ecosystem::app/00000000-0000-0000-0000-000000000000
+  id: ari:cloud:ecosystem::app/29474a90-2b29-4744-ac87-268a3dd8a29d
 
 permissions:
   scopes:
