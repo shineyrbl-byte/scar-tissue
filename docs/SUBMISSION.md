@@ -29,7 +29,7 @@ Engineering teams running services in production, especially on-call and release
 
 ## Checklist
 
-- [ ] Installation link (`forge install` → *Start sharing your app* in the developer console)
-- [ ] Public YouTube video under 5 minutes (script in `docs/DEMO.md`)
+- [x] Installation link: https://tinyurl.com/scar-tissue-install
+- [x] Demo video: https://youtu.be/YXnuIGSu_dk
 - [ ] Test site credentials for judges, or instructions to use the seed script
 - [ ] Repo link: https://github.com/shineyrbl-byte/scar-tissue

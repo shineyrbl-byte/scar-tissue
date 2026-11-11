@@ -8,6 +8,8 @@ Scar Tissue is an Atlassian Forge app and Rovo agent. When someone opens a Jira 
 
 > "Heads up: changes to **payments-webhook** caused **3 incidents** in the last 9 months. The postmortem for INC-42 says: *always replay the dead-letter queue after a schema change.* Ask **Priya**, she fixed the last two."
 
+▶️ **[Watch the demo video](https://youtu.be/YXnuIGSu_dk)** · 🔌 **[Install the app](https://tinyurl.com/scar-tissue-install)**
+
 Built for **Codegeist 2026** · Category: **Apps for Software Teams** · Bonus: **Best Agents (Rovo)**
 
 ---
