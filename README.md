@@ -79,7 +79,7 @@ forge install           # pick your Jira + Confluence site
 npm test                # core logic tests, no Atlassian account needed
 ```
 
-Demo data: see [`docs/DEMO.md`](docs/DEMO.md).
+Demo data: see [`docs/DEMO.md`](docs/DEMO.md). Video script: [`docs/VIDEO_SCRIPT.md`](docs/VIDEO_SCRIPT.md).
 
 ## License
 
